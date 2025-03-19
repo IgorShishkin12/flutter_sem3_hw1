@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'cat_model.dart';
 import 'package:http/http.dart' as http;
@@ -45,7 +46,10 @@ class CatProvider with ChangeNotifier {
     } else {
       throw Exception('Failed to load full cat');
     }
-    tmpcat.image = Image.network(tmpcat.imageUrl, fit: BoxFit.cover);
+    tmpcat.image = CachedNetworkImage(
+      imageUrl: tmpcat.imageUrl,
+      fit: BoxFit.cover,
+    );
 
     cats.add(tmpcat);
   }

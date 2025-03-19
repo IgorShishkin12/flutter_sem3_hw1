@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class Cat {
   final String id;
   final String imageUrl;
   final String breedName;
   final String description;
-  Image? image;
+  CachedNetworkImage? image;
 
   Cat({
     required this.id,
