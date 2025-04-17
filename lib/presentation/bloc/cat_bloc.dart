@@ -31,7 +31,7 @@ class CatBloc extends Bloc<CatEvent, CatState> {
     try {
       final cat = await getCatUseCase.execute();
       cats.insert(0, cat);
-      emit(CatLoaded(cats.first));
+      emit(CatLoaded(cats.first, likes)); // Include likes count
     } catch (e) {
       emit(CatError(e.toString()));
     }
@@ -41,10 +41,12 @@ class CatBloc extends Bloc<CatEvent, CatState> {
     likes++;
     final likedCat = cats.first.copyWith();
     event.context.read<LikedCatsBloc>().add(AddLikedCat(likedCat));
+    emit(CatLoaded(cats.first, likes)); // Emit with current likes count
     add(LoadCatEvent());
   }
 
   void _onDislikeCat(DislikeCatEvent event, Emitter<CatState> emit) {
+    emit(CatLoaded(cats.first, likes)); // Maintain likes count
     add(LoadCatEvent());
   }
 }

@@ -13,11 +13,12 @@ class CatLoading extends CatState {}
 
 class CatLoaded extends CatState {
   final Cat cat;
+  final int likes;
 
-  const CatLoaded(this.cat);
+  const CatLoaded(this.cat, this.likes);
 
   @override
-  List<Object> get props => [cat];
+  List<Object> get props => [cat, likes];
 }
 
 class CatError extends CatState {
