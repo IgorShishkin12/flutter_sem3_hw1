@@ -1,72 +1,88 @@
-# Cat App
 
-Приложение для просмотра случайных изображений котиков с использованием [TheCatAPI](https://thecatapi.com/). Пользователи могут просматривать изображения, узнавать породу котика, ставить лайки и дизлайки, а также просматривать детальную информацию о породе.
+# Cat App 🐱
 
----
+A Flutter application that displays random cat images with breed information, allows swiping to like/dislike, and maintains a list of favorite cats.
 
-## 📱 Скриншоты приложения
+![App Screenshot](screenshots/home_screen.jpg) ![Liked Cats Screenshot](screenshots/liked_cats.jpg)
 
-![Главный экран](screenshots/main.jpg)
-*Главный экран с изображением котика и кнопками лайка/дизлайка.*
+## Features ✨
 
-![Детали породы](screenshots/info.jpg)
-*Экран с детальной информацией о породе котика.*
+- **Swipe to Like/Dislike**: Swipe right to like or left to dislike cats
+- **Liked Cats Collection**: View all your liked cats in one place
+- **Breed Information**: See details about each cat's breed
+- **Filtering**: Filter liked cats by breed
+- **Responsive Design**: Works on both mobile and tablet devices
+- **Error Handling**: Graceful handling of network errors
+- **Image Caching**: Smooth image loading with caching
 
----
+## Technical Details 🛠️
 
-## 🚀 Реализованные фичи
+### Architecture
+- Clean Architecture with clear separation of:
+  - **Data Layer**: API calls and data sources
+  - **Domain Layer**: Business logic and entities
+  - **Presentation Layer**: UI and state management
 
-- **Случайные изображения котиков:** Приложение загружает случайные изображения котиков с использованием [TheCatAPI](https://thecatapi.com/).
-- **Информация о породе:** Для каждого котика отображается его порода и описание.
-- **Лайки и дизлайки:** Пользователи могут ставить лайки или дизлайки, чтобы перейти к следующему изображению.
-- **Анимация свайпа:** При свайпе влево или вправо изображение вращается относительно нижней части экрана.
-- **Детальный просмотр:** При нажатии на изображение открывается экран с детальной информацией о породе котика.
-- **Кэширование изображений:** Приложение предварительно загружает 20 изображений для плавного переключения.
+### State Management
+- Uses **BLoC pattern** for predictable state management
+- Separate BLoCs for:
+  - Main cat display (`CatBloc`)
+  - Liked cats collection (`LikedCatsBloc`)
 
----
+### Dependencies
+- **flutter_bloc**: State management
+- **cached_network_image**: Image loading and caching
+- **get_it**: Dependency injection
+- **http**: Network requests
+- **equatable**: Value equality for state objects
 
-## 📦 Установка и запуск
+## Installation ⚙️
 
-1. **Клонируйте репозиторий:**
+1. Clone the repository:
    ```bash
-   git clone https://github.com/IgorShishkin12/flutter_sem3_hw1
+   git clone https://github.com/IgorShishkin12/flutter_sem3_hw1.git
    cd cat-app
    ```
 
-2. **Установите зависимости:**
+2. Install dependencies:
    ```bash
    flutter pub get
    ```
 
-3. **Запустите приложение:**
+3. Run the app:
    ```bash
    flutter run
    ```
 
----
+## Building APK 🏗️
 
-## 📥 Скачать APK
+To build a release APK:
+```bash
+flutter build apk --release
+```
 
-Скачайте последнюю версию приложения: https://github.com/IgorShishkin12/flutter_sem3_hw1/build\app\outputs\flutter-apk\app-release.apk
+[Download Latest APK](https://github.com/IgorShishkin12/flutter_sem3_hw1/blob/master/build/app/outputs/flutter-apk/app-release.apk)
 
----
+## Project Structure 📂
 
-## 🛠 Технические детали
+```
+lib/
+├── data/
+│   ├── datasources/       # Remote data sources
+│   └── repositories/      # Repository implementations
+├── domain/
+│   ├── entities/          # Business objects
+│   ├── repositories/      # Repository interfaces
+│   └── usecases/          # Business logic
+├── presentation/
+│   ├── bloc/              # State management
+│   ├── pages/             # Screen widgets
+│   └── widgets/           # Reusable components
+├── di/                    # Dependency injection
+└── main.dart              # App entry point
+```
 
-### Основные компоненты
+## License 📄
 
-- **`CatProvider`:** Провайдер для управления состоянием приложения. Загружает изображения котиков, управляет лайками и дизлайками.
-- **`HomeScreen`:** Главный экран приложения, где отображается изображение котика, кнопки лайка/дизлайка и анимация свайпа.
-- **`CatDetailScreen`:** Экран с детальной информацией о породе котика.
-- **`MainImageRotation`:** Класс для управления анимацией вращения изображения при свайпе.
-
-### Зависимости
-
-- **`provider`:** Для управления состоянием приложения.
-- **`http`:** Для выполнения HTTP-запросов к API.
-
----
-
-## 📄 Лицензия
-
-Этот проект не распространяется.
+This project is not licensed.
+```
