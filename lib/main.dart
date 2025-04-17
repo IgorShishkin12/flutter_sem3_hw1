@@ -1,12 +1,15 @@
+// main.dart
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'cat_provider.dart';
-import 'home_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:untitled/presentation/bloc/cat_bloc.dart';
+import 'package:untitled/presentation/bloc/liked_cats_bloc.dart';
+import 'di/injector.dart';
+import 'presentation/pages/home_screen.dart';
 
-void main() {
-  runApp(
-    ChangeNotifierProvider(create: (context) => CatProvider(), child: MyApp()),
-  );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDependencies();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,6 +17,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Cat App', home: HomeScreen());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => getIt<CatBloc>()),
+        BlocProvider(create: (context) => getIt<LikedCatsBloc>()),
+      ],
+      child: MaterialApp(
+        title: 'Cat App',
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: HomeScreen(),
+      ),
+    );
   }
 }
