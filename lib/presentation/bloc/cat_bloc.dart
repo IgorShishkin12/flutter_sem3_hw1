@@ -7,6 +7,7 @@ import '../../domain/usecases/get_cat.dart';
 import 'liked_cats_bloc.dart';
 
 part 'cat_event.dart';
+
 part 'cat_state.dart';
 
 class CatBloc extends Bloc<CatEvent, CatState> {

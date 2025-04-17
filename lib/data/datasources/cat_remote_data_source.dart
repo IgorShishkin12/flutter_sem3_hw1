@@ -3,6 +3,7 @@ import 'dart:convert';
 
 abstract class CatRemoteDataSource {
   Future<Map<String, dynamic>> getRandomCat();
+
   Future<Map<String, dynamic>> getCatDetails(String id);
 }
 

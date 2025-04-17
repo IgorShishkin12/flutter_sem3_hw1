@@ -19,7 +19,9 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const LikedCatsScreen()),
+                MaterialPageRoute(
+                  builder: (context) => const LikedCatsScreen(),
+                ),
               );
             },
           ),
@@ -30,16 +32,17 @@ class HomeScreen extends StatelessWidget {
           if (state is CatError) {
             showDialog(
               context: context,
-              builder: (ctx) => AlertDialog(
-                title: const Text('Error'),
-                content: Text(state.message),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.of(ctx).pop(),
-                    child: const Text('OK'),
+              builder:
+                  (ctx) => AlertDialog(
+                    title: const Text('Error'),
+                    content: Text(state.message),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.of(ctx).pop(),
+                        child: const Text('OK'),
+                      ),
+                    ],
                   ),
-                ],
-              ),
             );
           }
         },
@@ -65,10 +68,10 @@ class HomeScreen extends StatelessWidget {
                     child: Center(
                       child: CachedNetworkImage(
                         imageUrl: cat.imageUrl,
-                        placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                        errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                        placeholder:
+                            (context, url) => const CircularProgressIndicator(),
+                        errorWidget:
+                            (context, url, error) => const Icon(Icons.error),
                         fit: BoxFit.cover,
                       ),
                     ),

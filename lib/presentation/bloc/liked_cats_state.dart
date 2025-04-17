@@ -11,6 +11,7 @@ class LikedCatsInitial extends LikedCatsState {}
 
 class LikedCatsUpdated extends LikedCatsState {
   final List<Cat> cats;
+
   const LikedCatsUpdated(this.cats);
 
   @override

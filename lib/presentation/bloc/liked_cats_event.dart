@@ -9,6 +9,7 @@ abstract class LikedCatsEvent extends Equatable {
 
 class AddLikedCat extends LikedCatsEvent {
   final Cat cat;
+
   const AddLikedCat(this.cat);
 
   @override
@@ -17,6 +18,7 @@ class AddLikedCat extends LikedCatsEvent {
 
 class RemoveLikedCat extends LikedCatsEvent {
   final int index;
+
   const RemoveLikedCat(this.index);
 
   @override
@@ -25,6 +27,7 @@ class RemoveLikedCat extends LikedCatsEvent {
 
 class FilterLikedCats extends LikedCatsEvent {
   final String? breed;
+
   const FilterLikedCats(this.breed);
 
   @override

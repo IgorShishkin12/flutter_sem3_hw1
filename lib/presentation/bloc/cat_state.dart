@@ -13,6 +13,7 @@ class CatLoading extends CatState {}
 
 class CatLoaded extends CatState {
   final Cat cat;
+
   const CatLoaded(this.cat);
 
   @override
@@ -21,6 +22,7 @@ class CatLoaded extends CatState {
 
 class CatError extends CatState {
   final String message;
+
   const CatError(this.message);
 
   @override

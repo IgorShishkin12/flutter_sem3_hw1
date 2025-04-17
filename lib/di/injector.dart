@@ -25,9 +25,7 @@ Future<void> initializeDependencies() async {
   );
 
   // Use cases
-  getIt.registerSingleton<GetCatUseCase>(
-    GetCatUseCase(getIt<CatRepository>()),
-  );
+  getIt.registerSingleton<GetCatUseCase>(GetCatUseCase(getIt<CatRepository>()));
 
   // BLoCs
   getIt.registerFactory<CatBloc>(() => CatBloc(getIt<GetCatUseCase>()));

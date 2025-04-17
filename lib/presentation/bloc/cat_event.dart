@@ -11,6 +11,7 @@ class LoadCatEvent extends CatEvent {}
 
 class LikeCatEvent extends CatEvent {
   final BuildContext context;
+
   const LikeCatEvent(this.context);
 
   @override

@@ -1,8 +1,9 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../domain/entities/cat.dart';
 
 part 'liked_cats_event.dart';
+
 part 'liked_cats_state.dart';
 
 class LikedCatsBloc extends Bloc<LikedCatsEvent, LikedCatsState> {
@@ -27,9 +28,10 @@ class LikedCatsBloc extends Bloc<LikedCatsEvent, LikedCatsState> {
 
   void _onFilterLikedCats(FilterLikedCats event, Emitter<LikedCatsState> emit) {
     filterBreed = event.breed;
-    final filtered = filterBreed == null
-        ? likedCats
-        : likedCats.where((cat) => cat.breedName == filterBreed).toList();
+    final filtered =
+        filterBreed == null
+            ? likedCats
+            : likedCats.where((cat) => cat.breedName == filterBreed).toList();
     emit(LikedCatsUpdated(filtered));
   }
 }

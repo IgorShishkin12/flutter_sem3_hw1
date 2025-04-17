@@ -14,16 +14,13 @@ class FilterWidget extends StatelessWidget {
       onSelected: (breed) {
         bloc.add(FilterLikedCats(breed == 'All' ? null : breed));
       },
-      itemBuilder: (context) => [
-        const PopupMenuItem(
-          value: 'All',
-          child: Text('All Breeds'),
-        ),
-        ...breeds.map((breed) => PopupMenuItem(
-          value: breed,
-          child: Text(breed),
-        )),
-      ],
+      itemBuilder:
+          (context) => [
+            const PopupMenuItem(value: 'All', child: Text('All Breeds')),
+            ...breeds.map(
+              (breed) => PopupMenuItem(value: breed, child: Text(breed)),
+            ),
+          ],
       child: const Icon(Icons.filter_list),
     );
   }
