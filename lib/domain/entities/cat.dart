@@ -18,6 +18,24 @@ class Cat {
     this.image,
   });
 
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'imageUrl': imageUrl,
+    'breedName': breedName,
+    'description': description,
+    'likedDate': likedDate.toIso8601String(), // Store date as ISO string
+  };
+
+  factory Cat.fromJsonStore(Map<String, dynamic> json) { // Renamed to avoid conflict
+    return Cat(
+      id: json['id'],
+      imageUrl: json['imageUrl'],
+      breedName: json['breedName'],
+      description: json['description'],
+      likedDate: DateTime.parse(json['likedDate']),
+    );
+  }
+
   factory Cat.fromJson(Map<String, dynamic> json) {
     final breeds = json['breeds'] as List<dynamic>?;
     final breed = breeds != null && breeds.isNotEmpty ? breeds[0] : null;

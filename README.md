@@ -4,6 +4,7 @@
 A Flutter application that displays random cat images with breed information, allows swiping to like/dislike, and maintains a list of favorite cats.
 
 ![App Screenshot](screenshots/home_screen.jpg) ![Liked Cats Screenshot](screenshots/liked_cats.jpg)
+![No internet Screenshot](screenshots/no_internet.png)
 
 ## Features ✨
 
@@ -14,6 +15,7 @@ A Flutter application that displays random cat images with breed information, al
 - **Responsive Design**: Works on both mobile and tablet devices
 - **Error Handling**: Graceful handling of network errors
 - **Image Caching**: Smooth image loading with caching
+- **Cache on shutdown**: likes and cats are now saved even after app reload
 
 ## Technical Details 🛠️
 

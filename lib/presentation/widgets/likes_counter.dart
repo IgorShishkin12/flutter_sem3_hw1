@@ -13,29 +13,34 @@ class LikesCounter extends StatelessWidget {
         // Only rebuild when likes change, not when cat changes
         return previous is CatLoaded &&
             current is CatLoaded &&
-            context.read<CatBloc>().likes != (previous).likes;
+            context.read<CatBloc>().likes_ != (previous).likes;
       },
       builder: (context, state) {
-        final likes = context.read<CatBloc>().likes;
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.thumb_down),
-              color: Colors.grey,
-              onPressed: () {
-                context.read<CatBloc>().add(DislikeCatEvent());
-              },
-            ),
-            Text('Likes: $likes'),
-            IconButton(
-              icon: const Icon(Icons.thumb_up),
-              color: Colors.red,
-              onPressed: () {
-                context.read<CatBloc>().add(LikeCatEvent(context));
-              },
-            ),
-          ],
+        return FutureBuilder(
+          future: context.read<CatBloc>().syncLikes(),
+          builder: (context, state) {
+            final likes = context.read<CatBloc>().likes_;
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.thumb_down),
+                  color: Colors.grey,
+                  onPressed: () {
+                    context.read<CatBloc>().add(DislikeCatEvent());
+                  },
+                ),
+                Text('Likes: $likes'),
+                IconButton(
+                  icon: const Icon(Icons.thumb_up),
+                  color: Colors.red,
+                  onPressed: () {
+                    context.read<CatBloc>().add(LikeCatEvent(context));
+                  },
+                ),
+              ],
+            );
+          },
         );
       },
     );

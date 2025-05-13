@@ -7,6 +7,8 @@ abstract class LikedCatsEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class LoadLikedCats extends LikedCatsEvent {}
+
 class AddLikedCat extends LikedCatsEvent {
   final Cat cat;
 
@@ -17,12 +19,12 @@ class AddLikedCat extends LikedCatsEvent {
 }
 
 class RemoveLikedCat extends LikedCatsEvent {
-  final int index;
+  final String catId;
 
-  const RemoveLikedCat(this.index);
+  const RemoveLikedCat(this.catId);
 
   @override
-  List<Object> get props => [index];
+  List<Object> get props => [catId];
 }
 
 class FilterLikedCats extends LikedCatsEvent {

@@ -28,13 +28,14 @@ class LikedCatsScreen extends StatelessWidget {
           return ListView.builder(
             itemCount: cats.length,
             itemBuilder: (context, index) {
+              final cat = cats[index];
               return Dismissible(
-                key: Key(cats[index].id),
+                key: Key(cat.id),
                 background: Container(color: Colors.red),
                 onDismissed: (direction) {
-                  context.read<LikedCatsBloc>().add(RemoveLikedCat(index));
+                  context.read<LikedCatsBloc>().add(RemoveLikedCat(cat.id));
                 },
-                child: CatCard(cat: cats[index]),
+                child: CatCard(cat: cat),
               );
             },
           );
